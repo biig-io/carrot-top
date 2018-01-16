@@ -45,7 +45,7 @@ class CarrotTop
     end
     request = Net::HTTP::Get.new(url.request_uri)
     request.add_field("content-type", "application/json")
-    request.basic_auth(url.user, url.password)
+    request.basic_auth(URI.unescape(url.user), URI.unescape(url.password))
     response = http.request(request)
     case response
     when Net::HTTPSuccess
